@@ -6,20 +6,18 @@ import static com.googlecode.catchexception.apis.BDDCatchException.*;
 import static fr.xebia.xke.solid.srp.DataChannel.DIAGNOSTIC_MESSAGE;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class TelemetryClientTest {
+public class DataChannelTest {
 
-    private final Connection connection = new Connection("test");
     private final DataChannel dataChannel = new DataChannel();
-    private final TelemetryClient telemetryClient = new TelemetryClient(connection, dataChannel);
 
     @Test
     public void should_receive_random_response_when_sending_an_unexpected_request() {
 
         // Arrange
-        telemetryClient.send("whatUWant");
+        dataChannel.send("whatUWant");
 
         // Act
-        final String response = telemetryClient.receive();
+        final String response = dataChannel.receive();
 
         // Assert
         assertThat(response)
@@ -30,7 +28,7 @@ public class TelemetryClientTest {
     private void should_throw_an_illegal_argument_exception_when_sending_an_invalid_message(String invalidMessage) {
 
         // Act
-        when(() -> telemetryClient.send(invalidMessage));
+        when(() -> dataChannel.send(invalidMessage));
 
         // Assert
         then(caughtException()).isInstanceOf(IllegalArgumentException.class);
@@ -50,10 +48,10 @@ public class TelemetryClientTest {
     public void should_receive_diagnostic_response_when_sending_diagnostic_request() {
 
         // Arrange
-        telemetryClient.send(DIAGNOSTIC_MESSAGE);
+        dataChannel.send(DIAGNOSTIC_MESSAGE);
 
         // Act
-        final String response = telemetryClient.receive();
+        final String response = dataChannel.receive();
 
         // Assert
         assertThat(response)
@@ -65,7 +63,7 @@ public class TelemetryClientTest {
     public void should_receive_random_response_when_no_request_has_been_sent() {
 
         // Act
-        final String response = telemetryClient.receive();
+        final String response = dataChannel.receive();
 
         // Assert
         assertThat(response)
@@ -77,16 +75,15 @@ public class TelemetryClientTest {
     public void should_receive_random_response_when_receiving_a_same_response_twice() {
 
         // Arrange
-        telemetryClient.send(DIAGNOSTIC_MESSAGE);
-        telemetryClient.receive();
+        dataChannel.send(DIAGNOSTIC_MESSAGE);
+        dataChannel.receive();
 
         // Act
-        final String response = telemetryClient.receive();
+        final String response = dataChannel.receive();
 
         // Assert
         assertThat(response)
                 .isNotNull()
                 .doesNotContain("LAST");
     }
-
 }
