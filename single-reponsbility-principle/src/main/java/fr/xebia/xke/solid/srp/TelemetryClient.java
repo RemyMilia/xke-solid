@@ -17,8 +17,15 @@ public class TelemetryClient {
         this.dataChannel = checkNotNull(dataChannel);
     }
 
-    public void connect() {
-        connection.connect();
+    public void connect(int retry) {
+        while (!connection.isOnline() && retry > 0) {
+            connection.connect();
+            retry --;
+        }
+
+        if (!connection.isOnline()) {
+            throw new IllegalArgumentException("Unable to connect.");
+        }
     }
 
     public void disconnect() {
@@ -31,14 +38,6 @@ public class TelemetryClient {
 
     public String receive() {
         return dataChannel.receive();
-    }
-
-    /*
-     * Getters & setters.
-     */
-
-    public boolean getOnlineStatus() {
-        return connection.isOnline();
     }
 
 }

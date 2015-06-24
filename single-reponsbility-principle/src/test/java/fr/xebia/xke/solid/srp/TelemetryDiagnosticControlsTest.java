@@ -21,37 +21,18 @@ public class TelemetryDiagnosticControlsTest {
     }
 
     @Test
-    public void should_throw_an_exception_when_unable_to_connect() throws Exception {
-
-        // Arrange
-        Mockito.when(telemetryClientMock.getOnlineStatus()).thenReturn(false);
-
-        // Act
-        when(controls::checkTransmission);
-
-        // Assert
-        then(caughtException())
-                .isInstanceOf(Exception.class)
-                .hasMessage("Unable to connect.");
-
-        verify(telemetryClientMock, times(5)).getOnlineStatus();
-        verify(telemetryClientMock).disconnect();
-    }
-
-    @Test
     public void should_receive_diagnostic_response_when_sending_diagnostic_request() throws Exception {
 
         // Arrange
         final String aResponse = "aResponse";
 
-        Mockito.when(telemetryClientMock.getOnlineStatus()).thenReturn(false, true, true);
         Mockito.when(telemetryClientMock.receive()).thenReturn(aResponse);
 
         // Act
         controls.checkTransmission();
 
         // Assert
-        verify(telemetryClientMock, times(3)).getOnlineStatus();
+        verify(telemetryClientMock).connect(3);
         verify(telemetryClientMock).send(DIAGNOSTIC_MESSAGE);
         verify(telemetryClientMock).disconnect();
 
