@@ -5,7 +5,6 @@ package fr.xebia.xke.solid.srp;
  */
 public class TelemetryDiagnosticControls {
 
-    private final String DiagnosticChannelConnectionString = "*111#";
     private final TelemetryClient telemetryClient;
 
     private String diagnosticInfo = "";
@@ -21,7 +20,7 @@ public class TelemetryDiagnosticControls {
 
         int retryLeft = 3;
         while (!telemetryClient.getOnlineStatus() && retryLeft > 0) {
-            telemetryClient.connect(DiagnosticChannelConnectionString);
+            telemetryClient.connect();
             retryLeft -= 1;
         }
 

@@ -2,6 +2,8 @@ package fr.xebia.xke.solid.srp;
 
 import java.util.Random;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 /**
  * Exercise by Emily Bache (see <a href="https://github.com/emilybache/Racing-Car-Katas">this GitHub repository</a>).
  */
@@ -9,21 +11,21 @@ public class TelemetryClient {
 
     public static final String DIAGNOSTIC_MESSAGE = "AT#UD";
 
+    private final Connection connection;
     private final Random connectionEventsSimulator = new Random(42);
 
-    private boolean onlineStatus;
     private String diagnosticMessageResult;
 
-    public void connect(String telemetryServerConnectionString) {
-        if (telemetryServerConnectionString == null || "".equals(telemetryServerConnectionString)) {
-            throw new IllegalArgumentException();
-        }
+    public TelemetryClient(Connection connection) {
+        this.connection = checkNotNull(connection);
+    }
 
-        onlineStatus = true;
+    public void connect() {
+        connection.connect();
     }
 
     public void disconnect() {
-        onlineStatus = false;
+        connection.disconnect();
     }
 
     public void send(String message) {
@@ -79,7 +81,7 @@ public class TelemetryClient {
      */
 
     public boolean getOnlineStatus() {
-        return onlineStatus;
+        return connection.isOnline();
     }
 
 }

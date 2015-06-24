@@ -8,45 +8,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class TelemetryClientTest {
 
-    private final TelemetryClient telemetryClient = new TelemetryClient();
-
-    @Test
-    public void should_throw_an_illegal_argument_exception_when_connecting_with_no_string() {
-        should_throw_an_illegal_argument_exception_when_connecting_with_an_invalid_string(null);
-    }
-
-    @Test
-    public void should_throw_an_illegal_argument_exception_when_connecting_with_empty_string() {
-        should_throw_an_illegal_argument_exception_when_connecting_with_an_invalid_string("");
-    }
-
-    @Test
-    public void should_be_online_when_connection_is_established() {
-
-        // Act
-        telemetryClient.connect("aConnectionString");
-
-        // Assert
-        assertThat(telemetryClient.getOnlineStatus()).isTrue();
-    }
-
-    @Test
-    public void should_be_offline_when_no_connection_has_been_performed() {
-        assertThat(telemetryClient.getOnlineStatus()).isFalse();
-    }
-
-    @Test
-    public void should_be_offline_when_connection_is_terminated() {
-
-        // Arrange
-        telemetryClient.connect("aConnectionString");
-
-        // Act
-        telemetryClient.disconnect();
-
-        // Assert
-        assertThat(telemetryClient.getOnlineStatus()).isFalse();
-    }
+    private final Connection connection = new Connection("test");
+    private final TelemetryClient telemetryClient = new TelemetryClient(connection);
 
     @Test
     public void should_throw_an_illegal_argument_exception_when_sending_no_message() {
@@ -120,15 +83,6 @@ public class TelemetryClientTest {
 
         // Act
         when(() -> telemetryClient.send(invalidMessage));
-
-        // Assert
-        then(caughtException()).isInstanceOf(IllegalArgumentException.class);
-    }
-
-    private void should_throw_an_illegal_argument_exception_when_connecting_with_an_invalid_string(String invalidConnectionString) {
-
-        // Act
-        when(() -> telemetryClient.connect(invalidConnectionString));
 
         // Assert
         then(caughtException()).isInstanceOf(IllegalArgumentException.class);
