@@ -27,12 +27,12 @@ public class FreeOrder implements Order {
     }
 
 
-    public void setPrixUnitaire(BigDecimal prixUnitaire) {
+    public void setUnitPrice(BigDecimal prixUnitaire) {
         throw new NotImplementedException();
     }
 
 
-    public BigDecimal getPrixUnitaire() {
+    public BigDecimal getUnitPrice() {
         return BigDecimal.ZERO;
     }
 
@@ -64,7 +64,6 @@ public class FreeOrder implements Order {
     public void setDeliveryAddress(String deliveryAddress) {
         this.deliveryAddress = deliveryAddress;
     }
-
 
 
 }

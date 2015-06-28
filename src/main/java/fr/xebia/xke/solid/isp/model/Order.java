@@ -24,9 +24,8 @@ public interface Order {
 
     BigDecimal getMontant();
 
+    BigDecimal getUnitPrice();
 
-    BigDecimal getPrixUnitaire();
-
-    void setPrixUnitaire(BigDecimal prixUnitaire);
+    void setUnitPrice(BigDecimal prixUnitaire);
 
 }

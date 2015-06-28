@@ -15,6 +15,7 @@ public class DeliveryServiceTest {
     public void setUp() {
         deliveryService = new DeliveryService();
     }
+
     @Test
     public void shouldDeliverOrderOfPonyToHaussman() {
 

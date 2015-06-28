@@ -14,7 +14,6 @@ public class DematerialisedOrder implements Order {
     private BigDecimal prixUnitaire;
 
 
-
     public String getDeliveryAddress() {
         throw new NotImplementedException();
     }
@@ -54,11 +53,11 @@ public class DematerialisedOrder implements Order {
         return prixUnitaire;
     }
 
-    public BigDecimal getPrixUnitaire() {
+    public BigDecimal getUnitPrice() {
         return prixUnitaire;
     }
 
-    public void setPrixUnitaire(BigDecimal prixUnitaire) {
+    public void setUnitPrice(BigDecimal prixUnitaire) {
         this.prixUnitaire = prixUnitaire;
     }
 }
