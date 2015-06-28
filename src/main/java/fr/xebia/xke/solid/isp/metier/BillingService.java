@@ -12,7 +12,7 @@ public class BillingService {
 
     public String writeBill(Order order) {
 
-        BigDecimal montant = order.getUnitPrice().multiply(BigDecimal.valueOf(order.getQuantity()));
-        return order.getBillingAddress() + " must pay " + montant + " euros";
+        BigDecimal amount = order.getUnitPrice().multiply(BigDecimal.valueOf(order.getQuantity()));
+        return order.getBillingAddress() + " must pay " + amount + " euros";
     }
 }

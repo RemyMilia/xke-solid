@@ -22,7 +22,7 @@ public class FreeOrder implements Order {
     }
 
 
-    public BigDecimal getMontant() {
+    public BigDecimal getAmount() {
         throw new NotImplementedException();
     }
 

@@ -49,7 +49,7 @@ public class DematerialisedOrder implements Order {
         this.billingAddress = billingAddress;
     }
 
-    public BigDecimal getMontant() {
+    public BigDecimal getAmount() {
         return prixUnitaire;
     }
 

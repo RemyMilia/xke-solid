@@ -53,7 +53,7 @@ public class MainOrder implements Order {
         this.unitPrice = unitPrice;
     }
 
-    public BigDecimal getMontant() {
+    public BigDecimal getAmount() {
         return unitPrice.multiply(BigDecimal.valueOf(quantity));
     }
 

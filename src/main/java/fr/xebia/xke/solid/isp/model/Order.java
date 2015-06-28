@@ -22,7 +22,7 @@ public interface Order {
 
     void setBillingAddress(String facturationAddress);
 
-    BigDecimal getMontant();
+    BigDecimal getAmount();
 
     BigDecimal getUnitPrice();
 
