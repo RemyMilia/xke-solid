@@ -10,7 +10,7 @@ public class MainOrder implements Order {
     private int quantity;
 
     private String deliveryAddress;
-    private String facturationAddress;
+    private String billingAddress;
     private BigDecimal prixUnitaire;
 
     @Override
@@ -44,13 +44,13 @@ public class MainOrder implements Order {
     }
 
     @Override
-    public String getFacturationAddress() {
-        return facturationAddress;
+    public String getBillingAddress() {
+        return billingAddress;
     }
 
     @Override
-    public void setFacturationAddress(String facturationAddress) {
-        this.facturationAddress = facturationAddress;
+    public void setBillingAddress(String billingAddress) {
+        this.billingAddress = billingAddress;
     }
 
     public BigDecimal getPrixUnitaire() {

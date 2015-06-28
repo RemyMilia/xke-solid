@@ -18,9 +18,9 @@ public interface Order {
 
     void setDeliveryAddress(String deliveryAddress);
 
-    String getFacturationAddress();
+    String getBillingAddress();
 
-    void setFacturationAddress(String facturationAddress);
+    void setBillingAddress(String facturationAddress);
 
     BigDecimal getMontant();
 

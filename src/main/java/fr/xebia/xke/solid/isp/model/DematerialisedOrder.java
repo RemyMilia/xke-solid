@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 public class DematerialisedOrder implements Order {
 
     private String referenceItem;
-    private String facturationAddress;
+    private String billingAddress;
     private BigDecimal prixUnitaire;
 
 
@@ -42,12 +42,12 @@ public class DematerialisedOrder implements Order {
         this.referenceItem = referenceItem;
     }
 
-    public String getFacturationAddress() {
-        return facturationAddress;
+    public String getBillingAddress() {
+        return billingAddress;
     }
 
-    public void setFacturationAddress(String facturationAddress) {
-        this.facturationAddress = facturationAddress;
+    public void setBillingAddress(String billingAddress) {
+        this.billingAddress = billingAddress;
     }
 
     public BigDecimal getMontant() {

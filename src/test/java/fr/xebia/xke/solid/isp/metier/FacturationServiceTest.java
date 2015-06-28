@@ -22,7 +22,7 @@ public class FacturationServiceTest {
     public void shouldChargeSNCF() {
         //Given
         Order order = new MainOrder();
-        order.setFacturationAddress("SNCF");
+        order.setBillingAddress("SNCF");
         order.setPrixUnitaire(BigDecimal.valueOf(1));
         order.setQuantity(1);
 
@@ -37,7 +37,7 @@ public class FacturationServiceTest {
     public void shouldChargeSFR() {
         //Given
         Order order = new DematerialisedOrder();
-        order.setFacturationAddress("SFR");
+        order.setBillingAddress("SFR");
         order.setPrixUnitaire(BigDecimal.valueOf(666));
 
         //When

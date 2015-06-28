@@ -13,6 +13,6 @@ public class BillingService {
     public String writeBill(Order order) {
 
         BigDecimal montant = order.getPrixUnitaire().multiply(BigDecimal.valueOf(order.getQuantity()));
-        return order.getFacturationAddress() + " must pay " + montant + " euros";
+        return order.getBillingAddress() + " must pay " + montant + " euros";
     }
 }

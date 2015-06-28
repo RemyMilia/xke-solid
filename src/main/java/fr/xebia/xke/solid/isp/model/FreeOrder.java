@@ -12,12 +12,12 @@ public class FreeOrder implements Order {
     private int quantity;
     private String deliveryAddress;
 
-    public String getFacturationAddress() {
+    public String getBillingAddress() {
         throw new NotImplementedException();
     }
 
 
-    public void setFacturationAddress(String facturationAddress) {
+    public void setBillingAddress(String facturationAddress) {
         throw new NotImplementedException();
     }
 
