@@ -54,7 +54,7 @@ public class MainOrder implements Order {
     }
 
     public BigDecimal getAmount() {
-        return unitPrice.multiply(BigDecimal.valueOf(quantity));
+        return getUnitPrice().multiply(BigDecimal.valueOf(getQuantity()));
     }
 
 }
