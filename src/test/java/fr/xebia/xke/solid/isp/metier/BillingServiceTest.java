@@ -2,7 +2,6 @@ package fr.xebia.xke.solid.isp.metier;
 
 import fr.xebia.xke.solid.isp.model.DematerialisedOrder;
 import fr.xebia.xke.solid.isp.model.MainOrder;
-import fr.xebia.xke.solid.isp.model.Order;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -10,7 +9,7 @@ import java.math.BigDecimal;
 
 import static org.junit.Assert.assertEquals;
 
-public class FacturationServiceTest {
+public class BillingServiceTest {
     BillingService billingService;
 
     @Before
@@ -21,7 +20,7 @@ public class FacturationServiceTest {
     @Test
     public void shouldChargeSNCF() {
         //Given
-        Order order = new MainOrder();
+        MainOrder order = new MainOrder();
         order.setBillingAddress("SNCF");
         order.setUnitPrice(BigDecimal.valueOf(1));
         order.setQuantity(1);
@@ -36,7 +35,7 @@ public class FacturationServiceTest {
     @Test
     public void shouldChargeSFR() {
         //Given
-        Order order = new DematerialisedOrder();
+        DematerialisedOrder order = new DematerialisedOrder();
         order.setBillingAddress("SFR");
         order.setUnitPrice(BigDecimal.valueOf(666));
 
