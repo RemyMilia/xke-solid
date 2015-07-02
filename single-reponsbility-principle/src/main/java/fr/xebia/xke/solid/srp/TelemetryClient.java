@@ -17,10 +17,11 @@ public class TelemetryClient {
         this.dataChannel = checkNotNull(dataChannel);
     }
 
-    public void connect(int retry) {
-        while (!connection.isOnline() && retry > 0) {
+    public void connect(final int retry) {
+        int retryLeft = retry;
+        while (!connection.isOnline() && retryLeft > 0) {
             connection.connect();
-            retry --;
+            retryLeft--;
         }
 
         if (!connection.isOnline()) {
