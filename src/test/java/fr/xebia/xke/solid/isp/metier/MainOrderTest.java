@@ -13,7 +13,7 @@ import static org.junit.Assert.assertEquals;
 public class MainOrderTest {
 
     @Test
-    public void shouldHaveAmount(){
+    public void shouldHaveAmount() {
 
         //Given
         MainOrder order = new MainOrder();
